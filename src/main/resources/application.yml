@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    # 外置JDBC、Redis和Mail配置文件
+    active: jdbc
+  # 关闭Thymeleaf页面缓存
+  thymeleaf:
+    cache: false
+  # 配置国际化资源文件
+  messages:
+    basename: i18n.logo
+
+mybatis:
+  configuration:
+    # 开启驼峰命名匹配映射
+    map-underscore-to-camel-case: true
+  # 配置MyBatis的XML配置文件路径
+  mapper-locations: classpath:mapper/*Mapper.xml
+  # 配置实体类别名路径
+  type-aliases-package: com.itheima.entity
+
