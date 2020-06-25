@@ -1,6 +1,6 @@
 package com.itheima.mapper;
 
-import com.itheima.entity.Article;
+import com.itheima.model.entity.Article;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

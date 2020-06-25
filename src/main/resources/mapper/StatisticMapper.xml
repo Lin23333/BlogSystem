@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mapper.StatisticMapper">
+
+
+    <select id="selectStatisticWithArticleId" resultType="com.itheima.model.entity.Statistic">
+        select * from t_statistic where article_id = #{articleId}
+    </select>
+    <select id="getStatistic" resultMap="getStatistic">
+        select a.*, s.id sId, s.hits, s.comments_num
+        from t_article a, t_statistic s
+        where hits != '0' and a.id = s.article_id
+        order by s.hits DESC, s.comments_num DESC
+        limit 10
+    </select>
+    <resultMap id="getStatistic" type="com.itheima.model.dto.ArticleDTO">
+        <association property="article" javaType="com.itheima.model.entity.Article">
+            <id property="id" column="id" />
+            <result property="title" column="title" />
+            <result property="content" column="content" />
+            <result property="created" column="created" />
+            <result property="modified" column="modified" />
+            <result property="categories" column="categories" />
+            <result property="tags" column="tags" />
+            <result property="allowComment" column="allow_comment" />
+            <result property="thumbnail" column="thumbnail" />
+        </association>
+        <association property="statistic" javaType="com.itheima.model.entity.Statistic">
+            <id property="id" column="sId" />
+            <result property="articleId" column="id" />
+            <result property="hits" column="hits" />
+            <result property="commentsNum" column="comments_num" />
+        </association>
+    </resultMap>
+</mapper>

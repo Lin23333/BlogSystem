@@ -1,6 +1,6 @@
 package com.itheima.mapper;
 
-import com.itheima.entity.Article;
+import com.itheima.model.entity.Article;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 
