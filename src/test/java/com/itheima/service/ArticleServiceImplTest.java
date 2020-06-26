@@ -2,6 +2,7 @@ package com.itheima.service;
 
 import com.github.pagehelper.PageInfo;
 import com.itheima.model.dto.ArticleDTO;
+import com.itheima.model.entity.Article;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +28,14 @@ class ArticleServiceImplTest {
     @Test
     void getHeatArticles() {
         articleService.getHeatArticles().forEach(articleDTO -> {
-            System.out.println(articleDTO.getArticle().getId());
+            System.out.println(articleDTO.getId());
         });
     }
+
+    @Test
+    void selectArticleWithId() {
+        Article article = articleService.selectArticleWithId(13);
+        System.out.println(article);
+    }
+
 }

@@ -6,23 +6,23 @@
 <div class="am-g am-g-fixed blog-fixed index-page">
     <div class="am-u-md-8 am-u-sm-12">
         <!-- 文章遍历并分页展示 -->
-        <div th:each="article: ${articles.list}">
+        <div th:each="articleDTO: ${articles.list}">
             <article class="am-g blog-entry-article">
                 <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                    <img width="100%" class="am-u-sm-12" th:src="@{${commons.show_thumb(article)}}"/>
+                    <img width="100%" class="am-u-sm-12" th:src="@{${commons.show_thumb(articleDTO)}}"/>
                 </div>
                 <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
                     <!-- 文章分类 -->
                     <span class="blog-color"style="font-size: 15px;"><a>默认分类</a></span>
                     <span>&nbsp;&nbsp;&nbsp;</span>
                     <!-- 发布时间 -->
-                    <span style="font-size: 15px;" th:text="'发布于 '+ ${commons.dateFormat(article.created)}" />
+                    <span style="font-size: 15px;" th:text="'发布于 '+ ${commons.dateFormat(articleDTO.created)}" />
                     <h2>
-                        <div><a style="color: #0f9ae0;font-size: 20px;" th:href="${commons.permalink(article.id)}" th:text="${article.title}" />
+                        <div><a style="color: #0f9ae0;font-size: 20px;" th:href="${commons.permalink(articleDTO.id)}" th:text="${articleDTO.title}" />
                         </div>
                     </h2>
                     <!-- 文章摘要-->
-                    <div style="font-size: 16px;" th:utext="${commons.intro(article,75)}" />
+                    <div style="font-size: 16px;" th:utext="${commons.intro(articleDTO,75)}" />
                 </div>
             </article>
         </div>
@@ -54,9 +54,9 @@
         <div class="blog-sidebar-widget blog-bor">
             <h2 class="blog-text-center blog-title"><span>阅读排行榜</span></h2>
             <div style="text-align: left">
-                <th:block th:each="article :${articleList}">
-                    <a  style="font-size: 15px;" th:href="@{'/article/'+${article.id}}"
-                        th:text="${articleStat.index+1}+'、'+${article.title}+'('+${article.hits}+')'">
+                <th:block th:each="articleDTO,articleStat :${articleList}">
+                    <a  style="font-size: 15px;" th:href="@{'/article/'+${articleDTO.id}}"
+                        th:text="${articleStat.index+1}+'、'+${articleDTO.title}+'('+${articleDTO.statistic.hits}+')'">
                     </a>
                     <hr style="margin-top: 0.6rem;margin-bottom: 0.4rem" />
                 </th:block>

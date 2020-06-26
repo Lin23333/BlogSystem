@@ -4,7 +4,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/blog_system?serverTimezone=UTC
+      url: jdbc:mysql://localhost:3306/blog_system?serverTimezone=UTC&useAffectedRows=true
       username: root
       password: root
 

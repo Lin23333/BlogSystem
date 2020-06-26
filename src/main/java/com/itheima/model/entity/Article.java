@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -19,6 +20,7 @@ import java.util.Date;
 @Table(name = "t_article")
 public class Article {
 
+  @Id
   private Integer id;                    // 文章ID
   private String title;                  // 文章标题
   private String content;                // 文章内容

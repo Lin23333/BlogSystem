@@ -2,6 +2,7 @@ package com.itheima.service;
 
 import com.github.pagehelper.PageInfo;
 import com.itheima.model.dto.ArticleDTO;
+import com.itheima.model.entity.Article;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface ArticleService {
     // 统计热度排名前十的文章信息
     List<ArticleDTO> getHeatArticles();
 
+    Article selectArticleWithId(Integer id);
 }

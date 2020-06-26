@@ -6,14 +6,11 @@ import com.itheima.mapper.ArticleMapper;
 import com.itheima.mapper.StatisticMapper;
 import com.itheima.model.dto.ArticleDTO;
 import com.itheima.model.entity.Article;
-import com.itheima.model.entity.Statistic;
 import com.itheima.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,19 +25,12 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public PageInfo<ArticleDTO> selectArticleWithPage(Integer page, Integer count) {
         PageHelper.startPage(page, count);
+        List<ArticleDTO> articleList = articleMapper.selectArticleWithPage();
 
-        Example example = new Example(Article.class);
-        example.setOrderByClause("id DESC");
-        List<Article> articleList = articleMapper.selectByExample(example);
-
-        List<ArticleDTO> articleDTOList = new ArrayList<>();
-        articleList.forEach(article -> {
-            ArticleDTO articleDTO = new ArticleDTO();
-            articleDTO.setArticle(article);
-            articleDTO.setStatistic(statisticMapper.selectStatisticWithArticleId(article.getId()));
-            articleDTOList.add(articleDTO);
-        });
-        PageInfo<ArticleDTO> pageInfo = new PageInfo<>(articleDTOList);
+        articleList.forEach(articleDTO ->
+            articleDTO.setStatistic(statisticMapper.selectStatisticWithArticleId(articleDTO.getId()))
+        );
+        PageInfo<ArticleDTO> pageInfo = new PageInfo<>(articleList);
         return pageInfo;
     }
 
@@ -49,4 +39,10 @@ public class ArticleServiceImpl implements ArticleService {
         List<ArticleDTO> list = statisticMapper.getStatistic();
         return list;
     }
+
+    @Override
+    public Article selectArticleWithId(Integer id) {
+        return articleMapper.selectByPrimaryKey(id);
+    }
+
 }

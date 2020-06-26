@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.CommentMapper">
+
+    <select id="selectCommentWithPage" resultType="com.itheima.model.entity.Comment">
+        select * from t_comment where article_id=#{aid} order by id desc
+    </select>
+
+    <select id="selectNewComment" resultType="com.itheima.model.entity.Comment">
+        select * from t_comment order by id desc
+    </select>
+
+    <insert id="insertComment" useGeneratedKeys="true" keyProperty="id">
+        insert into t_comment (article_id, created, ip, content, author)
+        values (#{articleId}, #{created}, #{ip}, #{content}, #{author})
+    </insert>
+
+</mapper>
