@@ -18,5 +18,6 @@ public interface CommentMapper extends Mapper<Comment> {
     // 发表评论
     Integer insertComment(Comment comment);
 
-
+    // 根据文章ID删除评论
+    void deleteCommentWithId(int aId);
 }

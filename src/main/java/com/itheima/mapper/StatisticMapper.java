@@ -17,7 +17,7 @@ public interface StatisticMapper extends Mapper<Statistic> {
     List<ArticleDTO> getStatistic();
 
     // 新增文章对应的统计信息
-    void insertStatistic(Statistic statistic);
+    void insertStatistic(Integer aid);
 
     // 通过文章ID更新点击量或评论量
     void updateArticleHitsOrCommentsNumWithId(Statistic statistic);
@@ -25,4 +25,9 @@ public interface StatisticMapper extends Mapper<Statistic> {
     // 根据文章ID删除统计数据
     void deleteStatisticWithId(int aid);
 
+    // 统计博客文章总访问量
+    long getTotalVisit();
+
+    // 统计博客文章总评论量
+    long getTotalComment();
 }

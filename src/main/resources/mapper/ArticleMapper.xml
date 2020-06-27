@@ -6,11 +6,12 @@
         select * from t_article order by id desc
     </select>
 
-    <insert id="insertArticle" parameterType="com.itheima.model.entity.Article" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertArticle" parameterType="com.itheima.model.entity.Article" useGeneratedKeys="true"
+            keyProperty="id">
         insert into t_article
-          (title, content, created, modified, categories, tags, allow_comment, thumbnail)
+          (title, content, created, modified, categories, tags, allow_comment)
         values (#{title}, #{content}, #{created}, #{modified}, #{categories},
-                #{tags}, #{allowComment}, #{thumbnail})
+                #{tags}, #{allowComment, jdbcType=TINYINT})
     </insert>
 
     <update id="updateArticleWithId" parameterType="com.itheima.model.entity.Article">

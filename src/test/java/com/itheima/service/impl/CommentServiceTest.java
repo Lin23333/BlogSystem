@@ -10,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class CommentServiceTest {
 

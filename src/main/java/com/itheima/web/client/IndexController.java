@@ -66,12 +66,12 @@ public class IndexController {
      * @return
      */
     @GetMapping("/article/{id}")
-    public String getArticleById(@PathVariable Integer id, Model model) {
+    public String getArticleById(@PathVariable Integer id, String cp, Model model) {
         Article article = articleService.selectArticleWithId(id);
         if(article != null) {
             // 获取该文章的评论
-            if(article.getAllowComment() != 1) {  // 该文章允许评论
-                String cp = (String) model.getAttribute("cp");
+            if(article.getAllowComment()) {  // 该文章允许评论
+//                String cp = (String) model.getAttribute("cp");
                 cp = StringUtils.isBlank(cp) ? "1" : cp;
                 PageInfo<Comment> comments = commentService.getComments(id, Integer.parseInt(cp), 3);
                 model.addAttribute("cp", cp);

@@ -34,7 +34,7 @@
     </resultMap>
 
     <insert id="insertStatistic">
-        insert into t_statistic (article_id, hits, comments_num)  values (#{id}, 0, 0)
+        insert into t_statistic (article_id, hits, comments_num)  values (#{aid}, 0, 0)
     </insert>
 
     <update id="updateArticleHitsOrCommentsNumWithId">
@@ -49,5 +49,13 @@
     <delete id="deleteStatisticWithId">
         delete from t_statistic where article_id=#{aid}
     </delete>
+
+    <select id="getTotalVisit" resultType="java.lang.Long">
+        select sum(hits) from t_statistic;
+    </select>
+
+    <select id="getTotalComment" resultType="java.lang.Long">
+        select sum(comments_num) from t_statistic;
+    </select>
 
 </mapper>

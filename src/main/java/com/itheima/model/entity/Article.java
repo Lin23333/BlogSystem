@@ -32,7 +32,7 @@ public class Article {
   private Date modified;                // 修改时间
   private String categories;            // 文章分类
   private String tags;                  // 文章标签
-  private Integer allowComment;         // 是否允许评论（默认1）
+  private Boolean allowComment;         // 是否允许评论（默认true）
   private String thumbnail;             // 文章缩略图
 
 

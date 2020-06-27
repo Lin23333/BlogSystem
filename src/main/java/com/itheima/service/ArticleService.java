@@ -17,5 +17,15 @@ public interface ArticleService {
     // 统计热度排名前十的文章信息
     List<ArticleDTO> getHeatArticles();
 
+    // 根据ID查询文章
     Article selectArticleWithId(Integer id);
+
+    // 新增文章
+    void publish(Article article);
+
+    // 更新文章
+    void updateArticleWithId(Article article);
+
+    // 根据主键删除文章
+    void deleteArticleWithId(int id);
 }

@@ -3,6 +3,7 @@ package com.itheima.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.itheima.model.entity.Article;
 import com.itheima.model.entity.Statistic;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,7 +23,7 @@ public class ArticleDTO {
     private Date modified;                // 修改时间
     private String categories;            // 文章分类
     private String tags;                  // 文章标签
-    private Integer allowComment;         // 是否允许评论（默认1）
+    private Boolean allowComment;         // 是否允许评论（默认1）
     private String thumbnail;             // 文章缩略图
 
     private Statistic statistic;          // 文章统计信息

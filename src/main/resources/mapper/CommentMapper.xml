@@ -15,4 +15,9 @@
         values (#{articleId}, #{created}, #{ip}, #{content}, #{author})
     </insert>
 
+
+    <delete id="deleteCommentWithId" parameterType="int">
+        delete from t_comment where article_id=#{aId}
+    </delete>
+
 </mapper>

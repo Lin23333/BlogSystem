@@ -32,7 +32,7 @@ class ArticleMapperTest {
         a.setTitle("林圳我爱你");
         a.setContent("111111");
         a.setCreated(new Date());
-        a.setAllowComment(1);
+        a.setAllowComment(true);
 
         Integer result = articleMapper.insertArticle(a);
         System.out.println(result);
